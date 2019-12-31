@@ -1,11 +1,29 @@
 # GeneSet MAPR
 
+> This code corresponds to ...  
+> GeneSet MAPR: Characterization of Gene Sets Through Heterogeneous Network Patterns  
+> ... found at http://hdl.handle.net/2142/101057
+
+
 Two methods are provided for running GeneSet MAPR. The script mapr.py will complete all steps at once. Alternatively, the scripts can be run individually. This latter option is useful in the event one wishes to re-use a network that has already been processed.
 
 Expected network and gene set file formats are described at the end of this document.
 
 ## Approach 1: Using the MAPR wrapper
 
+A single script is provided for convenience. The MAPR process follows three main steps, as outlined in **Approach 2**. This is because each subsequent step can be run with variations using the output from the previous step, without requiring the previous step(s) to be re-run. The wrapper calls each of the three scripts described below, passing command-line arguments as appropriate.
+
+The wrapper requires 1 argument giving the path (relative or fixed) to the two network files provided by the user, as described in **Pre-processing the network**. All optional command-line flags used by the individual scripts (and described in **Approach 2**) are available when using the wrapper.
+
+A basic example of calling the wrapper using default options and the included example network:
+```
+$ python mapr.py ./networks/example_network.edge.txt
+```
+
+An example of calling the wrapper while limiting meta-paths to lengths of no greater than 2 edges, an alternative output directory, and creating only 31 models per input gene set:
+```
+$ python MAPR_networkPrep.py ./networks/example_network.edge.txt -l 2 -o ./alternative_output -n 31
+```
 
 ## Approach 2: Running scripts manually
 
